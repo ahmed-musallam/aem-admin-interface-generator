@@ -5,7 +5,7 @@ It follows the concepts outlined in [this blog post](https://blogs.perficient.co
 
 ## Installation
 ```sh
-npm install -aem-admin-interface-generator
+npm install -g aem-admin-interface-generator
 ```
 
 ## Usage
