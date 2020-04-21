@@ -5,19 +5,9 @@
 const execa = require('execa');
 const coralCache = require("../../../coral-spectrum-cache.js")
 
-async function getLatestNVersions(npmModule, n) {
-  try {
-    const {stdout} = await execa('npm', ['view', '-json', npmModule,'versions']);
-    const versions = JSON.parse(stdout)
-    return versions.reverse().slice(0,10)
-  } catch (e) {
-    console.error(e)
-  }
-}
-
 module.exports = {
   prompt: async function ({ prompter, args }) {
-    const versions = await getLatestNVersions('@adobe/coral-spectrum', 10)
+    const versions = await coralCache.getLatestNVersions(10)
     return prompter.prompt(
       [
         {

@@ -1,6 +1,6 @@
 const path = require('path')
+const coralCache = require("./coral-spectrum-cache")
 
-const coralSpectrumPath = path.join(__dirname, '.spectrum-cache')
 const fs = require('fs');
 module.exports = {
   appsRelativePath: (path, suffix) => {
@@ -18,7 +18,7 @@ module.exports = {
     }
   },
   getCoralPath(version) {
-    return path.join(coralSpectrumPath, `adobe-coral-spectrum-${version}/package`)
+    return path.join(coralCache.cacheFolderPath, `adobe-coral-spectrum-${version}/package`)
   },
   getCoralJs(version) {
     return fs.readFileSync(this.getCoralPath(version) + '/dist/js/coral.min.js').toString();
