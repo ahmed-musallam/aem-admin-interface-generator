@@ -20,8 +20,8 @@
   },
   "homepage": "https://github.com/ahmed-musallam/aem-admin-interface-generator#readme",
   "dependencies": {
-    "@adobe/coral-spectrum": "^4.5.4",
     "execa": "^4.0.0",
-    "hygen": "^5.0.3"
+    "hygen": "^5.0.3",
+    "tar": "^6.0.1"
   }
 }

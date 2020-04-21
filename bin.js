@@ -5,6 +5,8 @@ const Logger = require('hygen/lib/logger')
 const path = require('path')
 const defaultTemplates = path.join(__dirname, '_templates')
 
+// TODO: validate process.cwd() is decentant of apps folder
+
 runner(process.argv.slice(2), {
   templates: defaultTemplates,
   cwd: process.cwd(),

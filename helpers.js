@@ -1,6 +1,6 @@
 const path = require('path')
-const coralSpectrumPath = path.join(__dirname, 'node_modules/@adobe/coral-spectrum')
-const coralSpectrumVersion = require(coralSpectrumPath + '/package.json').version
+
+const coralSpectrumPath = path.join(__dirname, '.spectrum-cache')
 const fs = require('fs');
 module.exports = {
   appsRelativePath: (path, suffix) => {
@@ -17,14 +17,16 @@ module.exports = {
       return path;
     }
   },
-  coralSpectrumVersion: coralSpectrumVersion,
-  getCoralJs: () => {
-    return fs.readFileSync(coralSpectrumPath + '/dist/js/coral.min.js').toString();
+  getCoralPath(version) {
+    return path.join(coralSpectrumPath, `adobe-coral-spectrum-${version}/package`)
   },
-  getCoralCss: () => {
-    return fs.readFileSync(coralSpectrumPath + '/dist/css/coral.min.css').toString();
+  getCoralJs(version) {
+    return fs.readFileSync(this.getCoralPath(version) + '/dist/js/coral.min.js').toString();
   },
-  getCoralResources: (resourceName) => {
-    return fs.readFileSync(coralSpectrumPath + '/dist/resources/' + resourceName).toString();
+  getCoralCss(version) {
+    return fs.readFileSync(this.getCoralPath(version) + '/dist/css/coral.min.css').toString();
+  },
+  getCoralResources (resourceName, version) {
+    return fs.readFileSync(this.getCoralPath(version) + '/dist/resources/' + resourceName).toString();
   }
 }
